@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "56triVcjXzZmS83v622FCLeXzU3stLo8nyPBeY4C/QjsZ8YsK8mg2yk5HquvtxgTIHLdnDacu3Z5qA1QZ2YYzQ==",
+  "success": true,
+  "projectFilePath": "F:\\NSCC_2ndYear\\2ndSemester\\C#\\Assignments\\Assignment1-GitHub\\Assignment1-MP3Player\\Assignment1-MP3Player\\Assignment1-MP3Player.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\pcfra\\.nuget\\packages\\taglibsharp\\2.3.0\\taglibsharp.2.3.0.nupkg.sha512"
+  ],
+  "logs": []
+}

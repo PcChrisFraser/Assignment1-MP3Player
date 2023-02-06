@@ -1,0 +1,111 @@
+﻿<Window x:Class="Assignment1_MP3Player.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment1_MP3Player"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1000" Background="Aquamarine">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="MediaCommands.Play" 
+                        CanExecute="Play_CanExecute" 
+                        Executed="Play_Executed" />
+        <CommandBinding Command="MediaCommands.Pause" 
+                        CanExecute="Pause_CanExecute" 
+                        Executed="Pause_Executed" />
+        <CommandBinding Command="MediaCommands.Stop" 
+                        CanExecute="Stop_CanExecute" 
+                        Executed="Stop_Executed" />
+    </Window.CommandBindings>
+    
+    <Grid>
+        <StackPanel>
+            <!--Menu Items-->
+            <Menu>
+                <MenuItem Header="File">
+                    <MenuItem Header="Open MP3" Click="OpenFile_Click"/>
+                </MenuItem>
+                <MenuItem Header="Edit">
+                    <MenuItem Header="MP3 Tags" Click="EditTags_Click"/>
+                </MenuItem>
+                <MenuItem Header="Media">
+                    <MenuItem Header="Menu" Click="MainMenu_Click"/>
+                    <MenuItem Header="Play" Command="MediaCommands.Play"/>
+                    <MenuItem Header="Pause" Command="MediaCommands.Pause"/>
+                    <MenuItem Header="Stop" Command="MediaCommands.Stop"/>
+                </MenuItem>
+            </Menu>
+
+            <StackPanel Orientation="Horizontal" Height="450">
+                <!--Audio Controls-->
+                <StackPanel Orientation="Vertical"  Background="BlueViolet">
+                    <Button Content="▶️" FontSize="25" Margin="10" Width="40" Background="Transparent" BorderBrush="Transparent" Click="Play_Click"/>
+                    <Button Content="⏸" FontSize="25" Margin="10" Width="40" Background="Transparent" BorderBrush="Transparent" Click="Pause_Click"/>
+                    <Button Content="⏹" FontSize="25" Margin="10" Width="40" Background="Transparent" BorderBrush="Transparent" Click="Stop_Click"/>
+                </StackPanel>
+
+                <!--Main Menu Window StackPanel-->
+                <StackPanel x:Name="mainMenu" Visibility="Visible" Orientation="Vertical" Width="400">
+                    
+                    <!--Open File-->
+                    <Button Content="Open MP3 File" FontSize="25" Margin="10" Width="200" HorizontalAlignment="Left" Background="AntiqueWhite" Click="OpenFile_Click"/>
+                    <StackPanel x:Name="mp3FilePath" Visibility="Hidden" Orientation="Horizontal">
+                        <Label Content="File Path:" FontSize="18"/>
+                        <TextBlock x:Name="fileNameBox" FontSize="18"/>
+                    </StackPanel>
+                    <Border Background="Black" Height="5"/>
+
+                    <!--Show Tags-->
+                    <Button Content="Show Tags" FontSize="25" Margin="10" Width="200" HorizontalAlignment="Left" Background="AntiqueWhite" Click="ShowTags_Click"/>
+                    <StackPanel x:Name="showSongTags" Visibility="Hidden">
+                        <StackPanel Orientation="Horizontal">
+                            <!--Song Name-->
+                            <Label Content="Song Name:" FontSize="18"/>
+                            <TextBlock x:Name="tagNameBox" FontSize="18"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <!--Song Year-->
+                            <Label Content="Song Year:" FontSize="18"/>
+                            <TextBlock x:Name="tagYearBox" FontSize="18"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <!--Song Alubm-->
+                            <Label Content="Song Alubm:" FontSize="18"/>
+                            <TextBlock x:Name="tagAlubmBox" FontSize="18"/>
+                        </StackPanel>
+                        <Border Background="Black" Height="5"/>
+                    </StackPanel>
+                    
+
+                    <!--Media Element (invisible)-->
+                    <MediaElement x:Name="myMediaPlayer" 
+                      LoadedBehavior="Manual" UnloadedBehavior="Manual">
+                    </MediaElement>
+                    
+                </StackPanel> <!--End of Main Menu Window-->
+
+                <!--Edit Tags-->
+                <StackPanel x:Name="editTags" Visibility="Hidden" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Song Title:" FontSize="18" FontWeight="Bold"/>
+                        <TextBox x:Name="songTitle" FontSize="18" Width="100"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Song Year:" FontSize="18" FontWeight="Bold"/>
+                        <TextBox x:Name="songYear" FontSize="18" Width="100"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Song Album:" FontSize="18" FontWeight="Bold"/>
+                        <TextBox x:Name="songAlbum" FontSize="18" Width="100"/>
+                    </StackPanel>
+                    <Button Content="Save" FontSize="25" Margin="10" Width="200" HorizontalAlignment="Left" Background="AntiqueWhite" Click="SaveButton_Click"/>
+                </StackPanel>
+                
+            </StackPanel>
+            <Label Content="Label"/>
+        </StackPanel>
+    </Grid>
+</Window>
